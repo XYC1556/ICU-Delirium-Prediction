@@ -1,0 +1,33 @@
+# Patient-level and restricted research data
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.xlsx
+
+# Credentials and environment variables
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Local outputs
+outputs/
+results/
+data/
