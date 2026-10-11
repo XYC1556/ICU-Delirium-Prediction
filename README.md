@@ -1,72 +1,24 @@
 # ICU Delirium Prediction and Cross-Hospital Model Transportability
 
+**Author:** XIONG YICHENG — MSc Biomedical Informatics, National University of Singapore
+
 ## Overview
+Research code for analysing the incremental predictive value of first-day care-process measures for subsequently documented ICU delirium, and assessing model performance and transportability across hospitals using MIMIC-IV v3.1 and eICU v2.0.
 
-This project investigates the predictive value of first-day clinical
-and care-process measures for subsequent documented delirium in
-intensive care units.
+## Project structure
+- `sql/Extract.sql`: SQL extraction for MIMIC-IV / study cohorts.
+- `sql/eicu/`: eICU cohort selection, data audits, feature tables and analytical dataset queries.
+- `src/Analysis.ipynb`: Python modelling/analysis notebook (outputs removed).
+- `src/Figures.py`: plotting scripts.
+- `src/eICU_transportability_analysis_v1.0.py`: cross-hospital analysis, calibration and validation.
 
-Using MIMIC-IV and eICU databases, the study evaluates clinical
-prediction models and examines their generalisability across hospitals.
+## Execution and limitations
+The scripts are taken from the actual research project. They have **not been independently rerun or validated** in this public release. They require approved access to the relevant PhysioNet databases, authorized BigQuery resources, and locally prepared patient-level data. Some original relative paths expect the author's local project layout and will need adjustment; this repository does not supply restricted input data. SQL for the eICU work uses `YOUR_PROJECT_ID` as a placeholder in place of the original Google Cloud project identifier. The eICU SQL workflow may need queries executed in dependency order; see the numeric prefixes, with `00_data_audit.sql` used for auditing.
 
-## Research Objectives
-
-1. Develop clinical prediction models for subsequent documented ICU delirium.
-2. Assess the incremental predictive value of care-process measures.
-3. Evaluate model discrimination and calibration.
-4. Investigate cross-hospital differences in predictive performance.
-
-## Data Sources
-
-- MIMIC-IV v3.1
-- eICU Collaborative Research Database v2.0
-
-The study includes:
-
-- 28,089 ICU patients from MIMIC-IV.
-- 10,015 patients from 49 hospitals in eICU.
+No MIMIC-IV/eICU patient-level datasets or patient-level model predictions are distributed here. Access must comply with the PhysioNet credentialing and data-use agreements. Do not publish actual query outputs, patient identifiers, tokens, or other restricted information.
 
 ## Methods
+Nested logistic regression, cross-validation, bootstrap resampling, discrimination and calibration assessment, leave-one-hospital-out internal-external validation, and sensitivity analyses.
 
-- SQL-based clinical data extraction and cohort construction
-- Logistic regression modelling
-- Cross-validation and bootstrap resampling
-- Leave-one-hospital-out internal-external cross-validation
-- Model discrimination and calibration assessment
-- Sensitivity analyses
-
-## Tools
-
-- Python
-- SQL
-- Google BigQuery
-- Clinical prediction modelling
-
-## Key Findings
-
-Incremental predictive value observed in pooled analyses was not
-consistently reproduced at the hospital level.
-
-Substantial between-hospital heterogeneity was observed in model
-discrimination and calibration.
-
-## Research Status
-
-Manuscript under peer review at BMC Medical Informatics and
-Decision Making.
-
-## Data Availability
-
-MIMIC-IV and eICU are credentialed-access clinical databases.
-
-Patient-level data are not publicly redistributed in this repository.
-Access to the original datasets requires completion of the applicable
-training and data-use agreements.
-
-## Author
-
-XIONG YICHENG
-
-MSc in Biomedical Informatics (Analytics Track)
-
-National University of Singapore
+## Publications
+Manuscript status should be checked against the latest submission record before referencing it in applications.
